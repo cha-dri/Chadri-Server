@@ -17,7 +17,23 @@ async function postCourse (req, res) {
   }
 }
 
+async function getCourse (req, res) {
+    try {
+      const { courseId } = req.params;
+      const foundCourse = await CourseService.getCourse(courseId);
+      res.status(200).json({
+        result: foundCourse
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ 
+        data: 'internal server err'
+      });
+    }
+  }
+
 export default {
-  postCourse
+  postCourse,
+  getCourse
 }
 
