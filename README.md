@@ -44,7 +44,7 @@ Backend Server
 
 
 | 팀원  | 소개 |
-|:---:|:-------:|:---------------:|
+|:---:|:-------:|
 | [진원](https://github.com/xmcodings) | 안녕하세요 김진원 입니다! ^.^ |
 | [소형](https://github.com/sohyeong-dev) | 안녕하세요 이소형 입니다! >.< |
 
