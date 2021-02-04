@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import apiRouter from './api/index.js';
 
+import apiRouter from './api/index.js';
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
