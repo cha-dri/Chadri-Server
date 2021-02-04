@@ -5,7 +5,7 @@ const connect = () => {
 		mongoose.set('debug', true);
 	}
 }
-mongoose.connect(`mongodb://${process.env.MONGO_ID}:${process.env.MONGO_PWD}@${process.env.MONGO_IP}:27017/${process.env.MONGO_DB}`, {
+mongoose.connect(`mongodb://${process.env.MONGO_IP}:27017`, {
 	dbName: 'boiler',
 	useNewUrlParser: true,
 	useCreateIndex: true
