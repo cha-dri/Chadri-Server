@@ -24,6 +24,7 @@ const CourseSchema = new Schema({
     ],
     theme: String,
     rating: Number,
+    like: Number,
     createdAt: {
       type: Date,
       default: Date.now
