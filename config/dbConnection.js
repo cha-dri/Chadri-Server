@@ -6,9 +6,10 @@ const connect = () => {
 	}
 }
 mongoose.connect(`mongodb://${process.env.MONGO_IP}:27017`, {
-	dbName: 'boiler',
+	dbName: 'chadri',
 	useNewUrlParser: true,
-	useCreateIndex: true
+	useCreateIndex: true, 
+	useUnifiedTopology: true
 }, (err) => {
 	if (err) {
 		console.log('connetction error: ', err);
