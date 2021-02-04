@@ -25,7 +25,17 @@ async function getCourse(courseid) {
     return foundCourse;
 }
 
+async function getCourseLimit(num) {
+    const foundCourse = await Course.find().populate("author").populate("places");    
+    const shuffle = foundCourse.sort(() => 0.5 - Math.random());
+    const courseRecommends = shuffle.slice(0,num);
+    console.log(courseRecommends);
+   
+    return courseRecommends;
+}
+
   export default {
       postCourse,
-      getCourse
+      getCourse,
+      getCourseLimit
   }
