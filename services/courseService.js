@@ -20,6 +20,12 @@ async function postCourse(placeIds, userId, courseName) {
     return newCourse;
   }
 
+async function getCourse(courseid) {
+    const foundCourse = await Course.findById(courseid).populate("author").populate("places");    
+    return foundCourse;
+}
+
   export default {
-      postCourse
+      postCourse,
+      getCourse
   }
