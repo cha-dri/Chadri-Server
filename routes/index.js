@@ -1,11 +1,14 @@
 import express from 'express';
 const router = express.Router();
-import postRouter from './posts/index.js';
+import apiRouter from './api/index.js';
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.send('Hello, chadri. Server is running!');
 });
-router.use('/posts', postRouter);
+
+
+router.use('/api', apiRouter);
 
 export default router;
