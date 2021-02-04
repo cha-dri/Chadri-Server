@@ -17,3 +17,8 @@ export const getPlaces = async (position, category = null) => {
   });
   return places;
 };
+
+export const getById = async (ids) => {
+  const places = await Place.fine({ _id: { $in: ids } });
+  return places;
+};
