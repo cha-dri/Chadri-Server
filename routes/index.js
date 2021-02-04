@@ -8,7 +8,6 @@ router.get('/', function (req, res, next) {
   res.send('Hello, chadri. Server is running!');
 });
 
-
 router.use('/api', apiRouter);
 
 export default router;
