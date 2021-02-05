@@ -14,12 +14,12 @@ export const getPlaces = async (position, category = null) => {
   const places = await Place.find( {
     ...where,
     latitude: {
-      $gt: position.lat - 0.3,
-      $lt: position.lat + 0.3,
+      $gt: Number(position.lat) - 0.3,
+      $lt: Number(position.lat) + 0.3,
     },
     longitude: {
-      $gt: position.long - 0.3,
-      $lt: position.long + 0.3,
+      $gt: Number(position.long) - 0.3,
+      $lt: Number(position.long) + 0.3,
     },
   });
   return places;

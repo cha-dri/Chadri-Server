@@ -35,7 +35,8 @@ async function getCourse (req, res) {
   async function getCourseLimit (req, res) {
     try {
       const { num } = req.params;
-      const recCourse = await CourseService.getCourseLimit(num);
+      const {lat, long} = req.query;
+      const recCourse = await CourseService.getCourseRecommnedLimit(num, lat, long);
       res.status(200).json({
         result: recCourse
       });
