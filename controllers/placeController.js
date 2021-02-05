@@ -23,7 +23,7 @@ export const getPlacesFilteredCategory = async (req, res) => {
       err.status = 400;
       throw (err);
     }
-    const category = req.params.filter;
+    const category = req.params.filter ?? null;
     const places = await placeService.getPlaces({ lat, long }, category);
     res.status(200).json({ data: places });
   } catch (err) {

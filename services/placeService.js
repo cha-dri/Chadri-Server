@@ -25,7 +25,7 @@ export const getPlaces = async (position, category = null) => {
   return places;
 };
 
-export const getById = async (ids) => {
+export const getPlaceByIds = async (ids) => {
   const places = await Place.find({ _id: ids });
   return places;
 };
