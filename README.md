@@ -37,7 +37,7 @@ Backend Server
  메인(main): 메인 브랜치
 
 ## Check our Our WIKI page!!
-
+[WIKI](https://github.com/cha-dri/Chadri-Server/wiki)
 
 ## Developer Introduction
 
