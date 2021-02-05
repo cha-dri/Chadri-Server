@@ -9,7 +9,6 @@ const CourseSchema = new Schema({
     },
     description: {
       type: String,
-      required: true,
     },
     author: {
       type: ObjectId,
@@ -22,9 +21,16 @@ const CourseSchema = new Schema({
             ref: 'Place'
         }
     ],
-    theme: String,
     rating: Number,
-    like: Number,
+    tag: [
+      {
+        type: String,
+      }
+    ],
+    isDone: {
+      type: Boolean,
+      default: false,
+    },
     createdAt: {
       type: Date,
       default: Date.now
