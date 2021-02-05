@@ -34,7 +34,8 @@ Backend Server
 <summary> 차들이🚙 Gitflow </summary>
       
 - main 브랜치
- 메인(main): 메인 브랜치
+ 메인(main): 메인 release 브랜치
+ 데브(develop): default 브랜치 
 
 ## Check our Our WIKI page!!
 [WIKI](https://github.com/cha-dri/Chadri-Server/wiki)
