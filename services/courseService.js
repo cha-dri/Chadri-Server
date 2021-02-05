@@ -11,7 +11,7 @@ async function postCourse(placeIds, userId, courseName) {
         places : placesFromId,
     })
     return newCourse;
-  }
+}
 
 async function getCourse(courseid) {
     const foundCourse = await Course.findById(courseid).populate("author").populate("places");    
