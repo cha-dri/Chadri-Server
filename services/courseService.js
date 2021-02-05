@@ -39,7 +39,7 @@ async function getCourseRecommnedLimit(num, lat, long) {
     return courseRecommends;
 }
 
-async function getCourseFilterLimit(tag, num) {
+async function getCourseByTagLimit(tag, num) {
     console.log("theme:", tag);
     const filterCourse = await Course.find({tag : tag}).populate("author").populate("places");    
     const shuffle = filterCourse.sort(() => 0.5 - Math.random());
@@ -74,8 +74,8 @@ async function createReivew(data) {
   export default {
       postCourse,
       getCourse,
-      getCourseLimit,
-      getCourseFilterLimit,
+      getCourseRecommnedLimit,
+      getCourseByTagLimit,
       getByUserId,
       createReivew,
   }

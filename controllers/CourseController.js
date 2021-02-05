@@ -48,10 +48,10 @@ async function getCourse (req, res) {
     }
   }
 
-  async function getCourseFilterLimit (req, res) {
+  async function getCoursebyTagLimit (req, res) {
     try {
-      const { num, filter } = req.params;
-      const filterCourse = await CourseService.getCourseFilterLimit(filter, num);
+      const { num, tag } = req.params;
+      const filterCourse = await CourseService.getCourseByTagLimit(tag, num);
       res.status(200).json({
         result: filterCourse
       });
@@ -86,6 +86,6 @@ export default {
   postCourse,
   getCourse,
   getCourseLimit,
-  getCourseFilterLimit,
+  getCoursebyTagLimit,
   createReivew,
 }
