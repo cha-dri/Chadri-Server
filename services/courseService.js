@@ -16,7 +16,6 @@ async function postCourse(placeIds, userId, courseName) {
         rating : 10,
         like: 0
     })
-
     return newCourse;
   }
 
@@ -30,12 +29,21 @@ async function getCourseLimit(num) {
     const shuffle = foundCourse.sort(() => 0.5 - Math.random());
     const courseRecommends = shuffle.slice(0,num);
     console.log(courseRecommends);
-   
     return courseRecommends;
+}
+
+async function getCourseFilterLimit(themeKeyword, num) {
+    console.log("theme:", themeKeyword);
+    const filterCourse = await Course.find({theme : themeKeyword}).populate("author").populate("places");    
+    const shuffle = filterCourse.sort(() => 0.5 - Math.random());
+    const courseFilter = shuffle.slice(0,num);
+    console.log(courseFilter);
+    return courseFilter;
 }
 
   export default {
       postCourse,
       getCourse,
-      getCourseLimit
+      getCourseLimit,
+      getCourseFilterLimit
   }

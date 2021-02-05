@@ -47,9 +47,26 @@ async function getCourse (req, res) {
     }
   }
 
+  async function getCourseFilterLimit (req, res) {
+    try {
+      const { num, filter } = req.params;
+      const filterCourse = await CourseService.getCourseFilterLimit(filter, num);
+      res.status(200).json({
+        result: filterCourse
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ 
+        data: 'internal server err'
+      });
+    }
+  }
+
+
 export default {
   postCourse,
   getCourse,
-  getCourseLimit
+  getCourseLimit,
+  getCourseFilterLimit
 }
 
