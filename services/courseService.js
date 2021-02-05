@@ -4,31 +4,46 @@ import UserService from "../services/UserService.js"
 
 async function postCourse(placeIds, userId, courseName) {
     const placesFromId = await getPlaceByIds(placeIds);
+    const existPlaceIds = placesFromId.map(place => String(place._id));
+    const places = placeIds.filter(placeId => existPlaceIds.includes(placeId));
+    const { latitude, longitude } = placesFromId.find(place => String(place._id) === places[0]);
+    
     const userFromId = await UserService.getUser(userId);
     const newCourse = await Course.create({
         title : courseName,
         author : userFromId,
-        places : placesFromId,
+        places,
+        latitude : latitude,
+        longitude : longitude
     })
     return newCourse;
-  }
+}
 
 async function getCourse(courseid) {
     const foundCourse = await Course.findById(courseid).populate("author").populate("places");    
     return foundCourse;
 }
 
-async function getCourseLimit(num) {
-    const foundCourse = await Course.find().populate("author").populate("places");    
+async function getCourseRecommnedLimit(num, lat, long) {
+    const foundCourse = await Course.find({
+        latitude: {
+            $gt: Number(lat) - 0.6,
+            $lt: Number(lat) + 0.6,
+        },
+        longitude: {
+            $gt: Number(long) - 0.6,
+            $lt: Number(long) + 0.6,
+      }
+    }).populate("author").populate("places");    
     const shuffle = foundCourse.sort(() => 0.5 - Math.random());
     const courseRecommends = shuffle.slice(0,num);
     console.log(courseRecommends);
     return courseRecommends;
 }
 
-async function getCourseFilterLimit(themeKeyword, num) {
-    console.log("theme:", themeKeyword);
-    const filterCourse = await Course.find({theme : themeKeyword}).populate("author").populate("places");    
+async function getCourseByTagLimit(tag, num) {
+    console.log("theme:", tag);
+    const filterCourse = await Course.find({tag : tag}).populate("author").populate("places");    
     const shuffle = filterCourse.sort(() => 0.5 - Math.random());
     const courseFilter = shuffle.slice(0,num);
     console.log(courseFilter);
@@ -55,13 +70,14 @@ async function createReivew(data) {
         }
       );
       return result;
+
 }
 
   export default {
       postCourse,
       getCourse,
-      getCourseLimit,
-      getCourseFilterLimit,
+      getCourseRecommnedLimit,
+      getCourseByTagLimit,
       getByUserId,
       createReivew,
   }
