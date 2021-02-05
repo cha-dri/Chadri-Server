@@ -21,6 +21,8 @@ const CourseSchema = new Schema({
             ref: 'Place'
         }
     ],
+    latitude: String,
+    longitude: String,
     rating: Number,
     tag: [
       {
