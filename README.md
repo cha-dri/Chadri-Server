@@ -1,11 +1,11 @@
-## 🚙 Project
+## 🚙 Project 차들이 (chadri)
+### Backend Server
 
 * <b> SW Univ, Joint Hackathon </b>
 * 프로젝트 기간: 2021.02.04 ~ 2021.02.06
 > 당신만의 완벽한 드라이브 코스, 차들이.
 
 
-Backend Server
 
 ### 🛠 Development Environment
 - NodeJs
