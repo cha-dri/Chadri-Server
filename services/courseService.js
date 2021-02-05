@@ -1,6 +1,4 @@
 import Course from '../models/course.js';
-import User from '../models/user.js';
-import Place from '../models/place.js'
 import { getPlaceByIds } from "../services/placeService.js";
 import UserService from "../services/UserService.js"
 
@@ -42,10 +40,28 @@ async function getByUserId(userId) {
     return courses;
 }
 
+async function createReivew(data) {
+    const { id, ...val } = data;
+    const tags = val.tag.split(',').map(tag => tag.trim());
+    const result = await Course.updateOne(
+        {
+          _id: id,
+        },
+        {
+            isDone: true,
+            description: val.comment,
+            rating: val.rating,
+            tag: tags,
+        }
+      );
+      return result;
+}
+
   export default {
       postCourse,
       getCourse,
       getCourseLimit,
       getCourseFilterLimit,
       getByUserId,
+      createReivew,
   }

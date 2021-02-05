@@ -62,11 +62,29 @@ async function getCourse (req, res) {
     }
   }
 
+  async function createReivew (req, res) {
+    try {
+      const { courseid } = req.params;
+      const { comment, rating, tag } = req.body;
+      const result = await CourseService.createReivew({ id: courseid, comment, rating, tag });
+      if (!result.n) {
+        res.json({
+          message: 'course not found'
+        });
+      }
+      res.json({
+        message: 'review added'
+      });  
+    } catch (err) {
+      res.status(err.status ?? 500).json({ error: err.message ?? 'add review failed' });
+    }
+  }
+
 
 export default {
   postCourse,
   getCourse,
   getCourseLimit,
-  getCourseFilterLimit
+  getCourseFilterLimit,
+  createReivew,
 }
-
