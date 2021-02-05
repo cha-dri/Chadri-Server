@@ -4,13 +4,15 @@ import UserService from "../services/UserService.js"
 
 async function postCourse(placeIds, userId, courseName) {
     const placesFromId = await getPlaceByIds(placeIds);
-    const { latitude, longitude } = placesFromId[0];
+    const existPlaceIds = placesFromId.map(place => String(place._id));
+    const places = placeIds.filter(placeId => existPlaceIds.includes(placeId));
+    const { latitude, longitude } = placesFromId.find(place => String(place._id) === places[0]);
     
     const userFromId = await UserService.getUser(userId);
     const newCourse = await Course.create({
         title : courseName,
         author : userFromId,
-        places : placesFromId,
+        places,
         latitude : latitude,
         longitude : longitude
     })
