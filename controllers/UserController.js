@@ -1,4 +1,5 @@
 import UserService from '../services/UserService.js'
+import CourseService from '../services/courseService.js'
 
 async function postUser (req, res) {
   console.log(req);
@@ -33,8 +34,28 @@ async function getUser (req, res) {
   }
 }
 
+async function getUserCourses (req, res) {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      let err = new Error('required value cannot be empty');
+      err.status = 400;
+      throw (err);
+    }
+    const courses = await CourseService.getByUserId(id);
+    res.status(200).json({
+      data: courses
+    });
+  } catch (err) {
+    res.status(err.status ?? 500).json({
+      error: err.message ?? 'internal server err'
+    });
+  }
+}
+
 export default {
   postUser,
-  getUser
+  getUser,
+  getUserCourses,
 }
 
