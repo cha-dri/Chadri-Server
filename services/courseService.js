@@ -39,6 +39,10 @@ async function getCourseFilterLimit(themeKeyword, num) {
     const courseFilter = shuffle.slice(0,num);
     console.log(courseFilter);
     return courseFilter;
+
+async function getByUserId(userId) {
+    const courses = await Course.find({ author: userId }).populate("author").populate("places");
+    return courses;
 }
 
   export default {
@@ -46,4 +50,5 @@ async function getCourseFilterLimit(themeKeyword, num) {
       getCourse,
       getCourseLimit,
       getCourseFilterLimit
+      getByUserId,
   }
