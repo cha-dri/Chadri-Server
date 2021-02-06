@@ -12,7 +12,7 @@
 
 ### 🖥 [API](https://www.notion.so/API-849531aafe174b979e9ba8bd6984a0a0)
 
-[🎥 데모 영상](https://youtu.be/2Lj_Yu49aR0)
+### [🎥 데모 영상](https://youtu.be/2Lj_Yu49aR0)
 
 #### 차들이의 코스 큐레이션
 
