@@ -5,7 +5,7 @@ const connect = () => {
 		mongoose.set('debug', true);
 	}
 }
-mongoose.connect(`mongodb://${process.env.MONGO_IP}:27017`, {
+mongoose.connect(`${process.env.MONGO_URI}`, {
 	dbName: 'chadri',
 	useNewUrlParser: true,
 	useCreateIndex: true, 
